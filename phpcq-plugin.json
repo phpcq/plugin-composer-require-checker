@@ -1,0 +1,22 @@
+{
+  "name": "composer-require-checker",
+  "type": "php-file",
+  "url": "src/composer-require-checker.php",
+  "api-version": "1.0.0",
+  "requirements": {
+    "php": {
+      "php": "^7.3 || ^8.0"
+    },
+    "tool": {
+      "composer-require-checker": {
+        "constraints": "^3.0 | ^2.0",
+        "sources": [
+          {
+            "type": "github",
+            "repository": "maglnet/ComposerRequireChecker"
+          }
+        ]
+      }
+    }
+  }
+}

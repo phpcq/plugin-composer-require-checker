@@ -1,0 +1,35 @@
+{
+  "name": "phpcq/plugin-composer-require-checker",
+  "type": "phpcq-plugin",
+  "description": "composer-require-checker plugin for phpcq.",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Christian Schiffler",
+      "email": "c.schiffler@cyberspectrum.de",
+      "homepage": "https://cyberspectrum.de",
+      "role": "lead"
+    },
+    {
+      "name": "David Molineus",
+      "email": "david.molineus@netzmacht.de",
+      "homepage": "https://netzmacht.de",
+      "role": "lead"
+    }
+  ],
+  "require": {
+    "php": "^7.3 || ^8.0",
+    "ext-pcre": "*",
+    "ext-spl": "*",
+    "phpcq/plugin-api": "^1.0@dev"
+  },
+  "require-dev": {
+    "phpcq/runner-bootstrap": "^1.0@dev",
+    "phpcq/schema": "^1.0@dev"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Phpcq\\ComposerRequireCheckerPluginTest\\": "tests"
+    }
+  }
+}
