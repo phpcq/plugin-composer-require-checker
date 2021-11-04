@@ -50,6 +50,7 @@ return new class implements DiagnosticsPluginInterface {
         yield $environment
             ->getTaskFactory()
             ->buildRunPhar('composer-require-checker', $this->buildArguments($config, $environment))
+            ->withoutXDebug()
             ->withWorkingDirectory($environment->getProjectConfiguration()->getProjectRootPath())
             ->withOutputTransformer($this->createOutputTransformerFactory($composerJson))
             ->build();
