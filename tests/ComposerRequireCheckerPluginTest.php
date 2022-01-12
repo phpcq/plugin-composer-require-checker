@@ -11,6 +11,7 @@ use Phpcq\PluginApi\Version10\DiagnosticsPluginInterface;
 use Phpcq\PluginApi\Version10\EnvironmentInterface;
 use Phpcq\PluginApi\Version10\Output\OutputInterface;
 use Phpcq\PluginApi\Version10\Output\OutputTransformerFactoryInterface;
+use Phpcq\PluginApi\Version10\Report\DiagnosticBuilderInterface;
 use Phpcq\PluginApi\Version10\Report\TaskReportInterface;
 use Phpcq\PluginApi\Version10\Task\PhpTaskBuilderInterface;
 use Phpcq\PluginApi\Version10\Task\ReportWritingTaskInterface;
@@ -109,6 +110,12 @@ final class ComposerRequireCheckerPluginTest extends TestCase
     public function testReport(array $diagnostics, string $output): void
     {
         $config = $this->getMockForAbstractClass(PluginConfigurationInterface::class);
+        $config
+            ->expects($this->atLeastOnce())
+            ->method('getString')
+            ->with('composer_file')
+            ->willReturn('/path/to/composer.json');
+
         $environment = $this->getMockForAbstractClass(EnvironmentInterface::class);
         $transformerFactory = null;
         $task = $this->getMockForAbstractClass(ReportWritingTaskInterface::class);
@@ -154,11 +161,18 @@ final class ComposerRequireCheckerPluginTest extends TestCase
 
         self::assertInstanceOf(OutputTransformerFactoryInterface::class, $transformerFactory);
 
+        $diagnosticBuilder = $this->getMockForAbstractClass(DiagnosticBuilderInterface::class);
+        $diagnosticBuilder
+            ->expects($this->exactly(count($diagnostics)))
+            ->method('forFile')
+            ->with('/path/to/composer.json');
+
         $report = $this->getMockForAbstractClass(TaskReportInterface::class);
         $report
             ->expects($this->exactly(count($diagnostics)))
             ->method('addDiagnostic')
-            ->withConsecutive(... $diagnostics);
+            ->withConsecutive(... $diagnostics)
+            ->willReturn($diagnosticBuilder);
 
         $transformer = $transformerFactory->createFor($report);
         $transformer->write($output, OutputInterface::CHANNEL_STDOUT);
