@@ -1,8 +1,8 @@
 {
   "name": "phpcq/plugin-composer-require-checker",
-  "type": "phpcq-plugin",
   "description": "composer-require-checker plugin for phpcq.",
   "license": "MIT",
+  "type": "phpcq-plugin",
   "authors": [
     {
       "name": "Christian Schiffler",
@@ -19,8 +19,7 @@
   ],
   "require": {
     "php": "^7.3 || ^8.0",
-    "ext-pcre": "*",
-    "ext-spl": "*",
+    "ext-json": "*",
     "phpcq/plugin-api": "^1.0@dev"
   },
   "require-dev": {
