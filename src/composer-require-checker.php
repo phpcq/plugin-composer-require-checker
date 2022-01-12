@@ -125,11 +125,11 @@ return new class implements DiagnosticsPluginInterface {
 
                     private function process(): void
                     {
-                        $data = json_decode($this->data->getData(), true);
-
-                        if (!is_array($data) || json_last_error()) {
+                        try {
+                            $data = json_decode($this->data->getData(), true, 512, JSON_THROW_ON_ERROR);
+                        } catch (JsonException $exception) {
                             $this->logDiagnostic(
-                                'Unable to parse output: ' . json_last_error_msg(),
+                                'Unable to parse output: ' . $exception->getMessage(),
                                 TaskReportInterface::SEVERITY_FATAL
                             );
 
