@@ -40,8 +40,15 @@ jobs:
           path: ~/.cache/composer
           key: ${{ runner.os }}-build-${{ env.cache-name }}
 
-      - name: Install composer dependencies
-        run: composer install
+      - name: Cache phpcq directory
+        uses: actions/cache@v1
+        env:
+          cache-name: phpcq-${{ matrix.php }}
+        with:
+          path: .phpcq
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.phpcq.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
 
       - name: Cache vendor directory
         uses: actions/cache@v1
@@ -53,18 +60,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
 
+      - name: Install composer dependencies
+        run: composer install
+
+      - name: Update phpcq
+        run: ./vendor/bin/phpcq self-update
+
       - name: Install phpcq toolchain
         run: ./vendor/bin/phpcq ${{ matrix.phpcq_install }} -v
-
-      - name: Cache phpcq directory
-        uses: actions/cache@v1
-        env:
-          cache-name: phpcq-${{ matrix.php }}
-        with:
-          path: .phpcq
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.phpcq.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
 
       - name: Run tests
         run: ./vendor/bin/phpcq run -v ${{ matrix.output }}
