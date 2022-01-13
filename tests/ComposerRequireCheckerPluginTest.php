@@ -135,6 +135,12 @@ final class ComposerRequireCheckerPluginTest extends TestCase
 
         $taskBuilder
             ->expects($this->once())
+            ->method('withoutXDebug')
+            ->withAnyParameters()
+            ->willReturn($taskBuilder);
+
+        $taskBuilder
+            ->expects($this->once())
             ->method('withOutputTransformer')
             ->withAnyParameters()
             ->willReturnCallback(
