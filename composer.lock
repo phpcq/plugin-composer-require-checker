@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpcq/plugin-api.git",
-                "reference": "41a171cb56b3200881fe569c705dadd6de565bfd"
+                "reference": "fb5707797635527a3e7af3561936688bf53cc33d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpcq/plugin-api/zipball/41a171cb56b3200881fe569c705dadd6de565bfd",
-                "reference": "41a171cb56b3200881fe569c705dadd6de565bfd",
+                "url": "https://api.github.com/repos/phpcq/plugin-api/zipball/fb5707797635527a3e7af3561936688bf53cc33d",
+                "reference": "fb5707797635527a3e7af3561936688bf53cc33d",
                 "shasum": ""
             },
             "require": {
@@ -72,7 +72,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-10-25T09:14:32+00:00"
+            "time": "2021-11-04T14:19:28+00:00"
         }
     ],
     "packages-dev": [
