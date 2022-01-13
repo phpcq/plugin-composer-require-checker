@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dceee71ecfcfce52f8e0ad68c518e287",
+    "content-hash": "a4203bc23a650fbd947472d6739fef9e",
     "packages": [
         {
             "name": "phpcq/plugin-api",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpcq/plugin-api.git",
-                "reference": "fb5707797635527a3e7af3561936688bf53cc33d"
+                "reference": "afc5a467fcca3d4ac1bc39587b7b9f0a4e45a3ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpcq/plugin-api/zipball/fb5707797635527a3e7af3561936688bf53cc33d",
-                "reference": "fb5707797635527a3e7af3561936688bf53cc33d",
+                "url": "https://api.github.com/repos/phpcq/plugin-api/zipball/afc5a467fcca3d4ac1bc39587b7b9f0a4e45a3ab",
+                "reference": "afc5a467fcca3d4ac1bc39587b7b9f0a4e45a3ab",
                 "shasum": ""
             },
             "require": {
@@ -72,7 +72,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-11-04T14:19:28+00:00"
+            "time": "2022-01-13T10:56:37+00:00"
         }
     ],
     "packages-dev": [
@@ -206,9 +206,8 @@
     "prefer-lowest": false,
     "platform": {
         "php": "^7.3 || ^8.0",
-        "ext-pcre": "*",
-        "ext-spl": "*"
+        "ext-json": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.2.0"
 }
