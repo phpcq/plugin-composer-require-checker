@@ -9,7 +9,7 @@
     },
     "tool": {
       "composer-require-checker": {
-        "constraints": "^3.8",
+        "constraints": "^3.8 || ^4.0",
         "sources": [
           {
             "type": "github",
