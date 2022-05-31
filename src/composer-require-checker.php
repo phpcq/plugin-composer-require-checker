@@ -132,6 +132,7 @@ return new class implements DiagnosticsPluginInterface {
                                 'Unable to parse output: ' . $exception->getMessage(),
                                 TaskReportInterface::SEVERITY_FATAL
                             );
+                            $this->report->addAttachment('error.log')->fromString($this->data->getData());
 
                             return;
                         }
